@@ -1,9 +1,37 @@
-spaargeld = int(input("Hoeveel spaargeld heb je?"))
-scooter = 1500
 
-if scooter - spaargeld > 500:
-  print("Je kunt beter een baantje gaan zoeken")
-elif scooter - spaargeld <= 0:
-  print("Je hebt geld genoeg om de scooter te kopen!")
-else:
-  print("Je hebt bijna geld genoeg, er is nog een klein beetje tekort")
+#lijst aan woorden om te raden.
+woord_lijst = [
+    "informatica",
+    "informatiekunde",
+    "spelletje",
+    "aardigheidje",
+    "scholier",
+    "fotografie",
+    "waardebepaling",
+    "specialiteit",
+    "verzekering",
+    "universiteit",
+    "heesterperk"
+]
+#computer kiest een willekeurige woord uit de lijst die je kunt raden.
+#computer gaat langs de lijst en kiest met een random functie een willekeurige woord. en slaat die op in een variabele.
+import random
+gekozen_woord = random.choice(woord_lijst)
+#de computer geeft de gebruiker 5 levens.
+aantal_levens = 5
+print( "je hebt nog "+ str(aantal_levens)+ "levens over om het woord te raden")
+print("de woord lengte is" + (len(gekozen_woord))
+#de computer vraagt de gebruiker om een letter te in te voeren.
+print = input("kies een letter:")
+
+
+
+
+
+
+
+
+
+
+
+
