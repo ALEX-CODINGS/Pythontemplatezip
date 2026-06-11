@@ -1,5 +1,5 @@
-import random 
-#lijst aan woorden om te raden.
+import random
+
 woord_lijst = [
     "informatica",
     "informatiekunde",
@@ -12,8 +12,8 @@ woord_lijst = [
     "verzekering",
     "universiteit",
     "heesterperk" ]
-#computer kiest een willekeurige woord uit de lijst die je kunt raden.
-#computer gaat langs de lijst en kiest met een random functie een willekeurige woord. en slaat die op in een variabele.
+
+
 gekozen_woord = random.choice(woord_lijst)
 
 aantal_levens = 5
@@ -22,6 +22,8 @@ woordjes = ["_"] * len(gekozen_woord)
 
 
 foute_letters = []
+
+
 
 def toon_galg(levens):
     galg = [
@@ -83,9 +85,12 @@ def toon_galg(levens):
 
     print(galg[5 - levens])
 
-print("= Galgje =")
-print("je hebt nog" + str(aantal_levens) + "levens")
+
+
+print("= GALGJE =")
+print("Je hebt nog " + str(aantal_levens) + " levens.")
 print("Het woord bestaat uit " + str(len(gekozen_woord)) + " letters.")
+
 
 while aantal_levens > 0 and "_" in woordjes:
 
@@ -96,14 +101,17 @@ while aantal_levens > 0 and "_" in woordjes:
     if len(foute_letters) > 0:
         print("Foute letters:", ", ".join(foute_letters))
 
+
     letter = input("Kies een letter: ").lower()
 
     gevonden = False
+
 
     for i in range(len(gekozen_woord)):
         if gekozen_woord[i] == letter:
             woordjes[i] = letter
             gevonden = True
+
 
     if gevonden:
         print("Goed geraden!")
@@ -121,23 +129,3 @@ else:
     toon_galg(0)
     print("\nHelaas, je hebt verloren.")
     print("Het woord was:", gekozen_woord)
-
-
-
-
-
-    
-
-   
-    
-
-
-
-
-
-
-
-
-
-
-
