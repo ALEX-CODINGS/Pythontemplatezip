@@ -1,5 +1,4 @@
 import random
-
 woord_lijst = [
     "informatica",
     "informatiekunde",
@@ -22,8 +21,6 @@ woordjes = ["_"] * len(gekozen_woord)
 
 
 foute_letters = []
-
-
 
 def toon_galg(levens):
     galg = [
