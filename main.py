@@ -126,3 +126,10 @@ else:
     toon_galg(0)
     print("\nHelaas, je hebt verloren.")
     print("Het woord was:", gekozen_woord)
+
+opnieuw = "ja"
+if opnieuw.lower() == "ja" :
+    print("=== Het spel wordt verder gespeeld! ===")
+else:
+    print("het spel is gestopt!")   
+opnieuw = input("wil je het spel verder spelen ja/nee:")
