@@ -1,4 +1,5 @@
 import random
+
 woord_lijst = [
     "informatica",
     "informatiekunde",
@@ -10,22 +11,14 @@ woord_lijst = [
     "specialiteit",
     "verzekering",
     "universiteit",
-    "heesterperk" ]
-
-
-gekozen_woord = random.choice(woord_lijst)
-
-aantal_levens = 5
-
-woordjes = ["_"] * len(gekozen_woord)
-
-
-foute_letters = []
+    "heesterperk" 
+]
 
 def toon_galg(levens):
     galg = [
         """
         -----
+
         |   |
             |
             |
@@ -35,6 +28,7 @@ def toon_galg(levens):
         """,
         """
         -----
+
         |   |
         O   |
             |
@@ -44,8 +38,10 @@ def toon_galg(levens):
         """,
         """
         -----
+
         |   |
         O   |
+
         |   |
             |
             |
@@ -53,6 +49,7 @@ def toon_galg(levens):
         """,
         """
         -----
+
         |   |
         O   |
        /|   |
@@ -62,6 +59,7 @@ def toon_galg(levens):
         """,
         """
         -----
+
         |   |
         O   |
        /|\\  |
@@ -71,6 +69,7 @@ def toon_galg(levens):
         """,
         """
         -----
+
         |   |
         O   |
        /|\\  |
@@ -79,57 +78,60 @@ def toon_galg(levens):
         =========
         """
     ]
-
     print(galg[5 - levens])
 
 
-
-print("= GALGJE =")
-print("Je hebt nog " + str(aantal_levens) + " levens.")
-print("Het woord bestaat uit " + str(len(gekozen_woord)) + " letters.")
-
-
-while aantal_levens > 0 and "_" in woordjes:
-
-    toon_galg(aantal_levens)
-
-    print("\nWoord:", " ".join(woordjes))
-
-    if len(foute_letters) > 0:
-        print("Foute letters:", ", ".join(foute_letters))
-
-
-    letter = input("Kies een letter: ").lower()
-
-    gevonden = False
-
-
-    for i in range(len(gekozen_woord)):
-        if gekozen_woord[i] == letter:
-            woordjes[i] = letter
-            gevonden = True
-
-
-    if gevonden:
-        print("Goed geraden!")
-    else:
-        aantal_levens -= 1
-        foute_letters.append(letter)
-        print("Fout geraden!")
-        print("Je hebt nog " + str(aantal_levens) + " levens.")
-
-
-if "_" not in woordjes:
-    print("\nGoed gedaan!")
-    print("Je hebt het woord geraden:", gekozen_woord)
-else:
-    toon_galg(0)
-    print("\nHelaas, je hebt verloren.")
-    print("Het woord was:", gekozen_woord)
-
 opnieuw = "ja"
-if opnieuw.lower() == "ja" :
-    print("=== Het spel wordt verder gespeeld! ===")
-else:
-    print("het spel is gestopt!")   
-opnieuw = input("wil je het spel verder spelen ja/nee:")
+
+while opnieuw.lower() == "ja":
+    print("\n=== Het spel wordt (verder) gespeeld! ===")
+
+    
+    gekozen_woord = random.choice(woord_lijst)
+    aantal_levens = 5
+    woordjes = ["_"] * len(gekozen_woord)
+    foute_letters = []
+
+    print("= GALGJE =")
+    print("Je hebt nog " + str(aantal_levens) + " levens.")
+    print("Het woord bestaat uit " + str(len(gekozen_woord)) + " letters.")
+
+    # dit is de game lus dat je de letter kan invoeren en als het fout is komt dat er te staan
+    while aantal_levens > 0 and "_" in woordjes:
+        toon_galg(aantal_levens)
+        print("\nWoord:", " ".join(woordjes))
+
+        if len(foute_letters) > 0:
+            print("Foute letters:", ", ".join(foute_letters))
+
+        letter = input("Kies een letter: ").lower()
+        gevonden = False
+
+        for i in range(len(gekozen_woord)):
+            if gekozen_woord[i] == letter:
+                woordjes[i] = letter
+                gevonden = True
+
+        if gevonden:
+            print("\033[32mGoed geraden!\033[0m")
+        else:
+            aantal_levens -= 1
+            foute_letters.append(letter)
+            print("\033[31mFout geraden!\033[0m")
+            print("Je hebt nog " + str(aantal_levens) + " levens.")
+
+    # Einde van de speelronde uitslag
+    if "_" not in woordjes:
+        print("\nGoed gedaan!")
+        print("Je hebt het woord geraden:", gekozen_woord)
+    else:
+        toon_galg(0)
+        print("\nHelaas, je hebt verloren.")
+        print("Het woord was:", gekozen_woord)
+
+    # Je vraagt aan de speler of hij verder wilt spelen hij moet kiezen uit ja of nee
+    opnieuw = input("\nWil je het spel verder spelen ja/nee: ")
+
+# Als de speler "nee" typt, breekt de game en voert Python dit uit
+print("Het spel is gestopt! Bedankt voor het spelen.")
+
