@@ -1,5 +1,5 @@
 import random
-
+# Dit is de lijst met mogelijke woorden die de computer dan kiest
 woord_lijst = [
     "informatica",
     "informatiekunde",
@@ -11,9 +11,9 @@ woord_lijst = [
     "specialiteit",
     "verzekering",
     "universiteit",
-    "heesterperk" 
+    "heesterperk"
 ]
-
+# dit is de fuctie die de galg tekent hier hadden we AI gebruikt, want we wisten niet hoe we de galg moesten maken
 def toon_galg(levens):
     galg = [
         """
@@ -82,12 +82,13 @@ def toon_galg(levens):
 
 
 opnieuw = "ja"
-
+# de spel word verder gespeeld zolang je ja blijft zeggen
 while opnieuw.lower() == "ja":
     print("\n=== Het spel wordt (verder) gespeeld! ===")
 
     
     gekozen_woord = random.choice(woord_lijst)
+    #Dit zijn de startwaarden voor het spel. Hier staat in hoe veel levens je hebt en de underscores voor de letters van het woord en hier worden ook de foute letters opgeslagen
     aantal_levens = 5
     woordjes = ["_"] * len(gekozen_woord)
     foute_letters = []
@@ -106,7 +107,7 @@ while opnieuw.lower() == "ja":
 
         letter = input("Kies een letter: ").lower()
         gevonden = False
-
+    #
         for i in range(len(gekozen_woord)):
             if gekozen_woord[i] == letter:
                 woordjes[i] = letter
