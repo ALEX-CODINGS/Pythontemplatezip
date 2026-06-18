@@ -15,6 +15,10 @@ woord_lijst = [
     "heesterperk"
 ]
 
+# Startscores voor de speler
+gewonnen_spellen = 0
+verloren_spellen = 0
+
 speler_naam = input("Wat is je naam? ")
 print(f"Welkom bij Galgje, {speler_naam}!")
 
@@ -95,6 +99,7 @@ while opnieuw.lower() == "ja":
     aantal_levens = 5
     woordjes = ["_"] * len(gekozen_woord)
     foute_letters = []
+    al_geraden_letters = []  # Houdt ALLE geraden letters bij
 
     print("\n= GALGJE =")
     print("Het woord bestaat uit " + str(len(gekozen_woord)) + " letters.")
@@ -109,11 +114,18 @@ while opnieuw.lower() == "ja":
 
         letter = input("Kies een letter: ").lower()
 
-        # Controleer of de invoer wel één letter is
+        # 1. Controleer of de invoer wel één letter is
         if len(letter) != 1 or not letter.isalpha():
-            print("Typ alstublieft één letter in.")
+            print("\033[33mTyp alstublieft één letter in.\033[0m")
             continue
 
+        # 2. Controleer of de letter al eerder is geraden
+        if letter in al_geraden_letters:
+            print(f"\033[33mJe hebt de letter '{letter}' al eens geprobeerd! Kies een andere.\033[0m")
+            continue
+
+        # Voeg de letter toe aan de lijst van geraden letters
+        al_geraden_letters.append(letter)
         gevonden = False
 
         for i in range(len(gekozen_woord)):
@@ -129,17 +141,25 @@ while opnieuw.lower() == "ja":
             print("\033[31mFout geraden!\033[0m")
             print("Je hebt nog " + str(aantal_levens) + " levens.")
 
-    # Controleer of de speler heeft gewonnen of verloren (binnen de herhalingslus)
+    # Controleer of de speler heeft gewonnen of verloren
     if "_" not in woordjes:
         print("\nGoed gedaan!")
         print("Je hebt het woord geraden:", gekozen_woord)
+        gewonnen_spellen += 1
     else:
         toon_galg(0)
         print("\nHelaas, je hebt verloren.")
         print("Het woord was:", gekozen_woord)
+        verloren_spellen += 1
 
-    # Vraag IN de lus of de speler nog een keer wil spelen
+    # Toon de tussenstand
+    print(f"\nTussenstand - Gewonnen: {gewonnen_spellen} | Verloren: {verloren_spellen}")
+
+    # Vraag of de speler nog een keer wil spelen
     opnieuw = input("\nWil je het spel verder spelen ja/nee: ")
 
-# Zodra de speler 'nee' (of iets anders dan ja) typt, stopt de code hier
-print("\nHet spel is gestopt! Bedankt voor het spelen.")
+# Eindscherm zodra de speler stopt
+print(f"\nHet spel is gestopt! Totale score van {speler_naam}:")
+print(f"Gewonnen: {gewonnen_spellen} keer")
+print(f"Verloren: {verloren_spellen} keer")
+print("Bedankt voor het spelen!")
