@@ -21,8 +21,7 @@ verloren_spellen = 0
 
 speler_naam = input("Wat is je naam? ")
 print(f"Welkom bij Galgje, {speler_naam}!")
-
-# Functie die de galg tekent op basis van het aantal levens (0 t/m 5)
+# Dit is de functie die de galg tekent. Hier hadden we AI gebruikt, want we wisten niet hoe we de galg moesten maken.
 def toon_galg(levens):
     galg = [
         """
@@ -96,6 +95,7 @@ while opnieuw.lower() == "ja":
     print("\n=== Het spel wordt (verder) gespeeld! ===")
 
     gekozen_woord = random.choice(woord_lijst)
+    
     aantal_levens = 5
     woordjes = ["_"] * len(gekozen_woord)
     foute_letters = []
