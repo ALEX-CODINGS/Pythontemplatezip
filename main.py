@@ -107,12 +107,12 @@ while opnieuw.lower() == "ja":
 
         letter = input("Kies een letter: ").lower()
         gevonden = False
-    #
+        # We lopen met 'i' door elke positie van het gekozen woord.  Op elke positie controleren we of de geraden letter overeenkomtmet de letter die op die plek in het woord staat. Als dat zo is, vullen we op die positie de underscore in met de juiste letter. Ook zetten we 'gevonden' op True, zodat het spel weet dat de spelereen correcte letter heeft geraden en dus geen leven verliest.
         for i in range(len(gekozen_woord)):
             if gekozen_woord[i] == letter:
                 woordjes[i] = letter
                 gevonden = True
-
+# hier zegt de computer als je een letter goed hebt geraden dat je het goed hebt en het heeft de kleur groen en als je fout hebt geraden zegt de computer in kleur rood dat je het fout hebt
         if gevonden:
             print("\033[32mGoed geraden!\033[0m")
         else:
@@ -121,7 +121,7 @@ while opnieuw.lower() == "ja":
             print("\033[31mFout geraden!\033[0m")
             print("Je hebt nog " + str(aantal_levens) + " levens.")
 
-    # Einde van de speelronde uitslag
+    # Einde van de speelronde uitslag. Hier hadden we ook ai gebruikt want hier deed onze code heel raar en we wisten niet wat er mis was dus we vroegen ai om help.
     if "_" not in woordjes:
         print("\nGoed gedaan!")
         print("Je hebt het woord geraden:", gekozen_woord)
