@@ -95,7 +95,7 @@ while opnieuw.lower() == "ja":
     print("\n=== Het spel wordt (verder) gespeeld! ===")
 
     gekozen_woord = random.choice(woord_lijst)
-    
+    # Hier staat dat je 5 levens hebt en dat je de letters kan invoeren bij de underscores en hier slaan ze de foute letters opgeslagen
     aantal_levens = 5
     woordjes = ["_"] * len(gekozen_woord)
     foute_letters = []
@@ -127,12 +127,12 @@ while opnieuw.lower() == "ja":
         # Voeg de letter toe aan de lijst van geraden letters
         al_geraden_letters.append(letter)
         gevonden = False
-
+         # Loop door alle letters van het woord om te kijken of de gekozen letter erin zit
         for i in range(len(gekozen_woord)):
             if gekozen_woord[i] == letter:
                 woordjes[i] = letter
                 gevonden = True
-
+        # Als je het goed hebt geraden dan wordt het groen en als je het fout hebt geraden dan wordt het rood.
         if gevonden:
             print("\033[32mGoed geraden!\033[0m")
         else:
@@ -141,7 +141,7 @@ while opnieuw.lower() == "ja":
             print("\033[31mFout geraden!\033[0m")
             print("Je hebt nog " + str(aantal_levens) + " levens.")
 
-    # Controleer of de speler heeft gewonnen of verloren
+    # je controleert of de speler heeft gewonnen of verloren
     if "_" not in woordjes:
         print("\nGoed gedaan!")
         print("Je hebt het woord geraden:", gekozen_woord)
@@ -152,13 +152,13 @@ while opnieuw.lower() == "ja":
         print("Het woord was:", gekozen_woord)
         verloren_spellen += 1
 
-    # Toon de tussenstand
+    # Hier tonen we de tussenstand
     print(f"\nTussenstand - Gewonnen: {gewonnen_spellen} | Verloren: {verloren_spellen}")
 
-    # Vraag of de speler nog een keer wil spelen
+    #Hier vraag je of de speler nog een keer wil spelen
     opnieuw = input("\nWil je het spel verder spelen ja/nee: ")
 
-# Eindscherm zodra de speler stopt
+# dit is de eindscherm zodra de speler stopt met spelen
 print(f"\nHet spel is gestopt! Totale score van {speler_naam}:")
 print(f"Gewonnen: {gewonnen_spellen} keer")
 print(f"Verloren: {verloren_spellen} keer")
